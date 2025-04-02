@@ -407,25 +407,25 @@
           class="btn btn-success shadow-sm"
           style="font-size: 14px"
           data-bs-toggle="modal"
-          data-bs-target="#addContributionModal"
+          data-bs-target="#addLoanModal"
         >
-          <i class="bi bi-journal-plus"></i> Add Coop Contribution
+          <i class="bi bi-journal-plus"></i> Add New Loan
         </a>
       </div>
-      <!-- Add Contribution Modal -->
+      <!-- Add Loan Modal -->
 
       <div
         class="modal fade"
-        id="addContributionModal"
+        id="addLoanModal"
         tabindex="-1"
-        aria-labelledby="addContributionModalLabel"
+        aria-labelledby="addLoanModalLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="addContributionModalLabel">
-                Add New Contribution | Cooperative Fund
+              <h5 class="modal-title" id="addLoanModalLabel">
+                Add New Loan | Cooperative Fund
               </h5>
               <button
                 type="button"
@@ -437,14 +437,12 @@
             <div class="modal-body">
               <form>
                 <div class="mb-3">
-                  <label for="contributionId" class="form-label"
-                    >Contribution ID</label
-                  >
+                  <label for="loanId" class="form-label">Loan ID</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="contributionId"
-                    placeholder="#CB2024-XXX"
+                    id="loanId"
+                    placeholder="#LN2024-XXX"
                     readonly
                   />
                   <small class="text-muted"
@@ -461,31 +459,55 @@
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="amount" class="form-label">Amount (₱)</label>
+                  <label for="loanAmount" class="form-label"
+                    >Loan Amount (₱)</label
+                  >
                   <input
                     type="number"
                     class="form-control"
-                    id="amount"
+                    id="loanAmount"
                     min="0"
                     step="0.01"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="contributionDate" class="form-label">Date</label>
+                  <label for="interestRate" class="form-label"
+                    >Interest Rate (%)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="interestRate"
+                    min="0"
+                    step="0.01"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="loanDate" class="form-label">Date Issued</label>
                   <input
                     type="date"
                     class="form-control"
-                    id="contributionDate"
+                    id="loanDate"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dueDate" class="form-label">Due Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="dueDate"
                     required
                   />
                 </div>
                 <div class="mb-3">
                   <label for="status" class="form-label">Status</label>
                   <select class="form-select" id="status" required>
+                    <option value="Active">Active</option>
                     <option value="Paid">Paid</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Failed">Failed</option>
+                    <option value="Overdue">Overdue</option>
                   </select>
                 </div>
               </form>
@@ -498,14 +520,12 @@
               >
                 Cancel
               </button>
-              <button type="button" class="btn btn-primary">
-                Save Contribution
-              </button>
+              <button type="button" class="btn btn-primary">Save Loan</button>
             </div>
           </div>
         </div>
       </div>
-      <!-- End Add Contribution Modal -->
+      <!-- End Add Loan Modal -->
 
       <section class="section">
         <div class="row">
@@ -513,7 +533,7 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">
-                  Capital Build-up Contributions <span>| Today</span>
+                  Cooperative Loans <span>| Today</span>
                 </h5>
 
                 <!-- Table with stripped rows -->
@@ -524,279 +544,231 @@
                         <th scope="col">#</th>
                         <th scope="col">Member</th>
                         <th scope="col">Amount</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Interest</th>
+                        <th scope="col">Date Issued</th>
+                        <th scope="col">Due Date</th>
                         <th scope="col" class="text-center">Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-001</a></th>
+                        <th scope="row"><a href="#">#LN2024-001</a></th>
                         <td>Maria Santos</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-19</td>
+                        <td>₱10,000</td>
+                        <td>5%</td>
+                        <td>2024-04-01</td>
+                        <td>2024-07-01</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-002</a></th>
+                        <th scope="row"><a href="#">#LN2024-002</a></th>
                         <td>John Rivera</td>
-                        <td>₱2,500</td>
-                        <td>2024-04-19</td>
+                        <td>₱25,000</td>
+                        <td>5%</td>
+                        <td>2024-03-15</td>
+                        <td>2024-06-15</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-003</a></th>
+                        <th scope="row"><a href="#">#LN2024-003</a></th>
                         <td>Elena Cruz</td>
-                        <td>₱5,000</td>
-                        <td>2024-04-19</td>
+                        <td>₱50,000</td>
+                        <td>6%</td>
+                        <td>2024-03-10</td>
+                        <td>2024-09-10</td>
                         <td class="text-center">
-                          <span class="badge bg-warning">Pending</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-004</a></th>
+                        <th scope="row"><a href="#">#LN2024-004</a></th>
                         <td>Pedro Reyes</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-19</td>
+                        <td>₱15,000</td>
+                        <td>5%</td>
+                        <td>2024-03-05</td>
+                        <td>2024-06-05</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-005</a></th>
+                        <th scope="row"><a href="#">#LN2024-005</a></th>
                         <td>Ana Gonzales</td>
-                        <td>₱3,000</td>
-                        <td>2024-04-18</td>
+                        <td>₱30,000</td>
+                        <td>5.5%</td>
+                        <td>2024-02-28</td>
+                        <td>2024-08-28</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-006</a></th>
+                        <th scope="row"><a href="#">#LN2024-006</a></th>
                         <td>Miguel Tan</td>
-                        <td>₱2,000</td>
-                        <td>2024-04-18</td>
+                        <td>₱20,000</td>
+                        <td>5%</td>
+                        <td>2024-02-20</td>
+                        <td>2024-05-20</td>
                         <td class="text-center">
-                          <span class="badge bg-warning">Pending</span>
+                          <span class="badge bg-danger">Overdue</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-007</a></th>
+                        <th scope="row"><a href="#">#LN2024-007</a></th>
                         <td>Sofia Lim</td>
-                        <td>₱1,500</td>
-                        <td>2024-04-18</td>
+                        <td>₱15,000</td>
+                        <td>5%</td>
+                        <td>2024-02-15</td>
+                        <td>2024-05-15</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-008</a></th>
+                        <th scope="row"><a href="#">#LN2024-008</a></th>
                         <td>Gabriel Reyes</td>
-                        <td>₱2,500</td>
-                        <td>2024-04-17</td>
+                        <td>₱25,000</td>
+                        <td>5.5%</td>
+                        <td>2024-02-10</td>
+                        <td>2024-08-10</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-009</a></th>
+                        <th scope="row"><a href="#">#LN2024-009</a></th>
                         <td>Isabella Santos</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-17</td>
+                        <td>₱10,000</td>
+                        <td>5%</td>
+                        <td>2024-02-05</td>
+                        <td>2024-05-05</td>
                         <td class="text-center">
-                          <span class="badge bg-danger">Unpaid</span>
+                          <span class="badge bg-danger">Overdue</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-010</a></th>
+                        <th scope="row"><a href="#">#LN2024-010</a></th>
                         <td>Rafael Mendoza</td>
-                        <td>₱5,000</td>
-                        <td>2024-04-16</td>
+                        <td>₱50,000</td>
+                        <td>6%</td>
+                        <td>2024-01-30</td>
+                        <td>2024-07-30</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-011</a></th>
+                        <th scope="row"><a href="#">#LN2024-011</a></th>
                         <td>Camila Diaz</td>
-                        <td>₱3,500</td>
-                        <td>2024-04-15</td>
+                        <td>₱35,000</td>
+                        <td>5.5%</td>
+                        <td>2024-01-25</td>
+                        <td>2024-07-25</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-012</a></th>
+                        <th scope="row"><a href="#">#LN2024-012</a></th>
                         <td>Lucas Garcia</td>
-                        <td>₱2,500</td>
+                        <td>₱25,000</td>
+                        <td>5%</td>
+                        <td>2024-01-20</td>
+                        <td>2024-04-20</td>
+                        <td class="text-center">
+                          <span class="badge bg-success">Paid</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="#">#LN2024-013</a></th>
+                        <td>Olivia Ramos</td>
+                        <td>₱10,000</td>
+                        <td>5%</td>
+                        <td>2024-01-15</td>
                         <td>2024-04-15</td>
                         <td class="text-center">
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-013</a></th>
-                        <td>Olivia Ramos</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-14</td>
-                        <td class="text-center">
                           <span class="badge bg-success">Paid</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-014</a></th>
+                        <th scope="row"><a href="#">#LN2024-014</a></th>
                         <td>Ethan Bautista</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-14</td>
+                        <td>₱15,000</td>
+                        <td>5%</td>
+                        <td>2024-01-10</td>
+                        <td>2024-04-10</td>
                         <td class="text-center">
-                          <span class="badge bg-danger">Unpaid</span>
+                          <span class="badge bg-success">Paid</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-015</a></th>
+                        <th scope="row"><a href="#">#LN2024-015</a></th>
                         <td>Sophia Aquino</td>
-                        <td>₱4,000</td>
-                        <td>2024-04-13</td>
+                        <td>₱40,000</td>
+                        <td>6%</td>
+                        <td>2024-01-05</td>
+                        <td>2024-07-05</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-016</a></th>
+                        <th scope="row"><a href="#">#LN2024-016</a></th>
                         <td>Benjamin Cruz</td>
-                        <td>₱2,500</td>
-                        <td>2024-04-13</td>
+                        <td>₱25,000</td>
+                        <td>5.5%</td>
+                        <td>2023-12-30</td>
+                        <td>2024-06-30</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-017</a></th>
+                        <th scope="row"><a href="#">#LN2024-017</a></th>
                         <td>Mia Fernandez</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-12</td>
+                        <td>₱10,000</td>
+                        <td>5%</td>
+                        <td>2023-12-25</td>
+                        <td>2024-03-25</td>
                         <td class="text-center">
                           <span class="badge bg-success">Paid</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-018</a></th>
+                        <th scope="row"><a href="#">#LN2024-018</a></th>
                         <td>Alexander Reyes</td>
-                        <td>₱3,000</td>
-                        <td>2024-04-11</td>
+                        <td>₱30,000</td>
+                        <td>5.5%</td>
+                        <td>2023-12-20</td>
+                        <td>2024-06-20</td>
                         <td class="text-center">
-                          <span class="badge bg-warning">Pending</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-019</a></th>
+                        <th scope="row"><a href="#">#LN2024-019</a></th>
                         <td>Victoria Santos</td>
-                        <td>₱2,500</td>
-                        <td>2024-04-11</td>
+                        <td>₱25,000</td>
+                        <td>5%</td>
+                        <td>2023-12-15</td>
+                        <td>2024-06-15</td>
                         <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
+                          <span class="badge bg-primary">Active</span>
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#CB2024-020</a></th>
+                        <th scope="row"><a href="#">#LN2024-020</a></th>
                         <td>Daniel Lim</td>
-                        <td>₱1,500</td>
-                        <td>2024-04-10</td>
+                        <td>₱15,000</td>
+                        <td>5%</td>
+                        <td>2023-12-10</td>
+                        <td>2024-03-10</td>
                         <td class="text-center">
                           <span class="badge bg-success">Paid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-021</a></th>
-                        <td>Emma Tan</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-10</td>
-                        <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-022</a></th>
-                        <td>James Gonzales</td>
-                        <td>₱2,000</td>
-                        <td>2024-04-09</td>
-                        <td class="text-center">
-                          <span class="badge bg-danger">Unpaid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-023</a></th>
-                        <td>Ava Mendoza</td>
-                        <td>₱3,000</td>
-                        <td>2024-04-09</td>
-                        <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-024</a></th>
-                        <td>William Diaz</td>
-                        <td>₱2,500</td>
-                        <td>2024-04-08</td>
-                        <td class="text-center">
-                          <span class="badge bg-warning">Pending</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-025</a></th>
-                        <td>Charlotte Garcia</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-07</td>
-                        <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-026</a></th>
-                        <td>Henry Ramos</td>
-                        <td>₱5,000</td>
-                        <td>2024-04-07</td>
-                        <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-027</a></th>
-                        <td>Amelia Bautista</td>
-                        <td>₱2,500</td>
-                        <td>2024-04-06</td>
-                        <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-028</a></th>
-                        <td>Sebastian Aquino</td>
-                        <td>₱1,000</td>
-                        <td>2024-04-06</td>
-                        <td class="text-center">
-                          <span class="badge bg-danger">Unpaid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-029</a></th>
-                        <td>Lily Cruz</td>
-                        <td>₱3,000</td>
-                        <td>2024-04-05</td>
-                        <td class="text-center">
-                          <span class="badge bg-success">Paid</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#CB2024-030</a></th>
-                        <td>Jackson Fernandez</td>
-                        <td>₱2,000</td>
-                        <td>2024-04-05</td>
-                        <td class="text-center">
-                          <span class="badge bg-warning">Pending</span>
                         </td>
                       </tr>
                     </tbody>
